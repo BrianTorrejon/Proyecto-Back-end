@@ -6,8 +6,8 @@ const storeSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-    },
+    }
 });
-const Cat = mongoose.model('Cat', storeSchema);
+const Cancion = mongoose.model('Cancion', storeSchema);
 
-module.exports = {Cat}
+module.exports = {Cancion}

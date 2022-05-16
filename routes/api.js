@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router(); 
-const {vistaGatitos, crearGatito} = require('../controller/controller.js')
+const {vistaCanciones, crearCancion} = require('../controller/controller.js')
 
 /* GET users listing. */
-router.get('/ver', vistaGatitos);
-router.post('/crear/:name', crearGatito);
+router.get('/ver', vistaCanciones);
+router.post('/crear', crearCancion);
 
 module.exports = router;

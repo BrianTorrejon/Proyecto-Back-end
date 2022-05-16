@@ -1,19 +1,24 @@
-const {Cat} = require('../models/model')
+const { Cancion } = require('../models/model')
+const {Album} = require('../models/album')
 
-const vistaUno = (req, res)=>{
+const vistaUno = (req, res) => {
     res.render('index', { title: 'Express' });
 }
 
-const vistaGatitos = async (req, res) =>{
-    const gatitos = await Cat.find()
-    res.json({gatitos})
+const vistaCanciones = async (req, res) => {
+    const canciones = await Cancion.find()
+    res.json({ canciones })
 }
 
-const crearGatito = async (req, res)=>{
-    const kitty = new Cat({ name: req.params.name });
-    await kitty.save()
-    console.log('meow')
-    res.json({msg: 'meow'})
+const crearCancion = async (req, res) => {
+    try {
+        const cancion = new Album(req.body);
+        await cancion.save()
+        res.status(201).json(cancion)
+    } catch (err) {
+        res.status(501).json({ msg: "no se puede huardar la cancion." })
+    }
+
 }
 
-module.exports = {vistaUno, crearGatito, vistaGatitos}
+module.exports = { vistaUno, crearCancion, vistaCanciones }
