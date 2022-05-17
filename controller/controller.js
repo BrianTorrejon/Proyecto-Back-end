@@ -5,6 +5,10 @@ const vistaUno = (req, res) => {
     res.render('index', { title: 'Express' });
 }
 
+const vistaUnaCancion = async (req, res) => {
+}
+
+
 const vistaCanciones = async (req, res) => {
     const canciones = await Cancion.find()
     res.json({ canciones })
@@ -21,4 +25,11 @@ const crearCancion = async (req, res) => {
 
 }
 
-module.exports = { vistaUno, crearCancion, vistaCanciones }
+const editarCancion = async (req, res) => {
+}
+
+const eliminarCancion = async (req, res) => {
+   
+}
+
+module.exports = { vistaUnaCancion, crearCancion, vistaCanciones, editarCancion, eliminarCancion, vistaUno }
