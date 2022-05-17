@@ -1,15 +1,15 @@
-const { Cancion } = require('../models/model')
+const { Cancion } = require('../models/cancion')
 const { Album } = require('../models/album')
+const { check, validationResult, body } = require("express-validator")
 
 const vistaUno = (req, res) => {
     res.render('index', { title: 'Express' });
 }
 
 const vistaUnaCancion = async (req, res) => {
-    const cancion = await Cancion.findById(req.params.id)
-    res.json({ cancion })
+        const cancion = await Cancion.findById(req.params.id)
+        res.json({ cancion })
 }
-
 
 const vistaCanciones = async (req, res) => {
     const canciones = await Cancion.find()
@@ -45,6 +45,7 @@ const editarCancion = async (req, res) => {
     } catch (error) {
         res.status(501).json({ msg: "No se puedo actualizar" })
     }
+
 }
 
 const eliminarCancion = async (req, res) => {
