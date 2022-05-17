@@ -5,7 +5,7 @@ const logger = require('morgan');
 const cors = require('cors');
 
 const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
+const cancionRouter = require('./routes/canciones')
 const {dbConnection} = require('./db/db')
 
 
@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use('/', indexRouter);
-app.use('/api', apiRouter);
+app.use('/api', cancionRouter);
 dbConnection()
 
 module.exports = app;
