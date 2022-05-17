@@ -11,13 +11,14 @@ router.post('/crear', [
     check('gender').not().isEmpty().withMessage("Debe ingresar el genero del album."),
     check('artist').not().isEmpty().withMessage("Ingresar el nombre del artista."),
     check('discografica').not().isEmpty().withMessage("Debe ingresar nombre de la discografica asociada al album."),
-    check('year').not().isEmpty().withMessage("Debe ingresar el año en que se publico el album.")
+    check('year').not().isEmpty().withMessage("Debe ingresar el año en que se publico el album.").isInt().withMessage("Debe ingresar un numero entero de 4 digitos.").isLength({ min: 4, max: 4 }).withMessage("Ingrese un año de 4 cifras")
 ], crearAlbum)
 router.put("/editar/:id", validarIdAlbum, [
-    check('name').not().isEmpty().withMessage("Debe ingresar el nombre de la canción.").isLength({ max: 30, min: 1 }).withMessage("Debe tener entr 1-30 caracteres."),
-    check('autor').not().isEmpty().withMessage("Debe ingresar el nombre del autor de la canción."),
-    check('fechaLanzamiento').not().isEmpty().withMessage("Ingresar fecha de lanzamiento de la canción."),
-    check('album').not().isEmpty().withMessage("Debe ingresar nombre del album al que pertenece la canción.")
+    check('name').not().isEmpty().withMessage("Debe ingresar el nombre del album.").isLength({ max: 30, min: 1 }).withMessage("Debe tener entr 1-30 caracteres."),
+    check('gender').not().isEmpty().withMessage("Debe ingresar el genero del album."),
+    check('artist').not().isEmpty().withMessage("Ingresar el nombre del artista."),
+    check('discografica').not().isEmpty().withMessage("Debe ingresar nombre de la discografica asociada al album."),
+    check('year').not().isEmpty().withMessage("Debe ingresar el año en que se publico el album.").isInt().withMessage("Debe ingresar un numero entero de 4 digitos.").isLength({ min: 4, max: 4 }).withMessage("Ingrese un año de 4 cifras")
 ], editarAlbum)
 router.delete("/eliminar/:id", validarIdAlbum, eliminarAlbum)
 

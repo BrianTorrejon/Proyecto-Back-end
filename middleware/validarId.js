@@ -17,7 +17,7 @@ const validarIdAlbum = async (req, res, next) => {
         const cancion = await Album.findById(req.params.id)
         next()
     } catch (error) {
-        res.status(400).json({ msg: "error en id" })
+        res.status(400).json({ msg: "error en id del album" })
     }
 }
 module.exports = { validarId, validarIdAlbum }

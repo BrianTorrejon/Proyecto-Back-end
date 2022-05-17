@@ -26,7 +26,6 @@ const storeSchema = new Schema({
     imgPortada: {
         type: String
     }
-
 });
 const Album = mongoose.model('Album', storeSchema);
 
