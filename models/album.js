@@ -14,8 +14,20 @@ const storeSchema = new Schema({
     artist: {
         type: String,
         required: true
+    },
+    discografica: {
+        type: String,
+        required: true
+    },
+    year: {
+        type: Number,
+        required: true
+    },
+    imgPortada: {
+        type: String
     }
+
 });
 const Album = mongoose.model('Album', storeSchema);
 
-module.exports = {Album}
+module.exports = { Album }

@@ -6,6 +6,7 @@ const cors = require('cors');
 
 const indexRouter = require('./routes/index');
 const cancionRouter = require('./routes/canciones')
+const albumRouter = require('./routes/albums')
 const {dbConnection} = require('./db/db')
 
 
@@ -21,6 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/api', cancionRouter);
+app.use('/album', albumRouter);
 dbConnection()
 
 module.exports = app;

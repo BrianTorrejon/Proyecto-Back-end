@@ -1,5 +1,4 @@
 const { Cancion } = require('../models/cancion')
-const { Album } = require('../models/album')
 const { check, validationResult, body } = require("express-validator")
 
 const vistaUno = (req, res) => {
