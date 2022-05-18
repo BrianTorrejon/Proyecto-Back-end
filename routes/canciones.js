@@ -1,11 +1,12 @@
 const express = require("express")
 const router = express.Router();
 const { check, validationResult, body } = require("express-validator");
-const { vistaCanciones, vistaUnaCancion, crearCancion, editarCancion, eliminarCancion } = require("../controller/controller");
-const { validarId } = require("../middleware/validarId")
+const { vistaCanciones, vistaUnaCancion, crearCancion, editarCancion, eliminarCancion, cancionesDeUnAlbum } = require("../controller/controller");
+const { validarId, validarAlbum, validarAlbumVacio } = require("../middleware/validaciones")
 
 router.get("/ver", vistaCanciones);
 router.get("/ver/:id", validarId, vistaUnaCancion);
+router.get("/buscarCanciones/:nameAlbum", validarAlbum, validarAlbumVacio, cancionesDeUnAlbum);
 router.post('/crear', [
     check('name').not().isEmpty().withMessage("Debe ingresar el nombre de la canción.").isLength({ max: 30, min: 1 }).withMessage("Debe tener entr 1-30 caracteres."),
     check('autor').not().isEmpty().withMessage("Debe ingresar el nombre del autor de la canción."),

@@ -6,8 +6,13 @@ const vistaUno = (req, res) => {
 }
 
 const vistaUnaCancion = async (req, res) => {
-        const cancion = await Cancion.findById(req.params.id)
-        res.json({ cancion })
+    const cancion = await Cancion.findById(req.params.id)
+    res.json({ cancion })
+}
+
+const cancionesDeUnAlbum = async (req, res) => {
+    const cancionesAlbum = await Cancion.find({ album: req.params.nameAlbum })
+    res.json({ cancionesAlbum })
 }
 
 const vistaCanciones = async (req, res) => {
@@ -28,7 +33,6 @@ const crearCancion = async (req, res) => {
     } catch (err) {
         res.status(501).json({ msg: "no se puede huardar la cancion." })
     }
-
 }
 
 const editarCancion = async (req, res) => {
@@ -50,10 +54,10 @@ const editarCancion = async (req, res) => {
 const eliminarCancion = async (req, res) => {
     try {
         const cancion = await Cancion.findByIdAndDelete(req.params.id)
-        res.json({ msg: "adios", cancion })
+        res.json({ msg: "Se elimino con exito", cancion })
     } catch (error) {
         res.status(400).json({ msg: "Problemas al borrar info." })
     }
 }
 
-module.exports = { vistaUnaCancion, crearCancion, vistaCanciones, editarCancion, eliminarCancion, vistaUno }
+module.exports = { vistaUnaCancion, crearCancion, vistaCanciones, editarCancion, eliminarCancion, vistaUno, cancionesDeUnAlbum }

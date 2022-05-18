@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router();
 const { check, validationResult, body } = require("express-validator");
 const { vistaUnAlbum, crearAlbum, vistaAlbums, editarAlbum, eliminarAlbum } = require("../controller/controllerAlbum");
-const { validarIdAlbum } = require("../middleware/validarId")
+const { validarIdAlbum } = require("../middleware/validaciones")
 
 router.get("/ver", vistaAlbums);
 router.get("/ver/:id", validarIdAlbum, vistaUnAlbum);
