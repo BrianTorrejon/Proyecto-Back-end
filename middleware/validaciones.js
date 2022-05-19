@@ -38,4 +38,13 @@ const validarAlbumVacio = async (req, res, next) => {  //Verifica que el album c
         res.status(400).json({ msg: "El album no tiene canciones para mostrar" })
     }
 }
-module.exports = { validarId, validarIdAlbum, validarAlbum, validarAlbumVacio }
+
+const validarAlbumEnBody = async (req, res, next) => { // Valida que exista el album a la hora de de crear o editar una cancion.
+    const nameAlbum = await Album.find({ name: req.body.album});
+    if (nameAlbum.length) {
+        next()
+    } else {
+        res.status(400).json({ msg: "No existe album en la base de datos. Primero crear el album" })
+    }
+}
+module.exports = { validarId, validarIdAlbum, validarAlbum, validarAlbumVacio, validarAlbumEnBody }
